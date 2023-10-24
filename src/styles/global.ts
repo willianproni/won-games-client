@@ -1,6 +1,6 @@
 'use client'
 
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, css } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
 
@@ -12,20 +12,21 @@ const GlobalStyles = createGlobalStyle`
     src: url('/fonts/poppins-v20-latin-300.woff2') format('woff2');
   }
 
-@font-face {
-  font-display: swap;
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 400;
-  src: url('/fonts/poppins-v20-latin-regular.woff2') format('woff2');
-}
-@font-face {
-  font-display: swap;
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 600;
-  src: url('/fonts/poppins-v20-latin-600.woff2') format('woff2');
-}
+  @font-face {
+    font-display: swap;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/poppins-v20-latin-regular.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    src: url('/fonts/poppins-v20-latin-600.woff2') format('woff2');
+  }
 
   * {
     margin: 0;
@@ -35,15 +36,16 @@ const GlobalStyles = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   }
 
-  html {
-    font-size: 62.5%;
-  }
-  html, body, #__next {
-    height: 100%;
-  }
-  body {
-    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  }
+  ${({ theme }) => css`
+    html {
+      font-size: 62.5%;
+    }
+
+    body {
+      font-family: ${theme.font.family};
+      font-size: ${theme.font.sizes.medium};
+    }
+  `}
 `
 
 export default GlobalStyles
